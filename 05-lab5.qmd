@@ -6,21 +6,59 @@ editor: visual
 
 ## Quarto
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+#8.2.1.1 Question 1.
 
 ```{r}
-1 + 1
+plotQualityProfile(fnFs, aggregate = TRUE)
+
+plotQualityProfile(fnRs, aggregate = TRUE)
 ```
 
-You can add options to executable code like this
+#8.3 Question 2.
 
 ```{r}
-#| echo: false
-2 * 2
+reverse_plot <- plotErrors(errR, nominalQ=TRUE)
+
+print(reverse_plot)
+
+ggplot2::ggsave(
+  filename = "reverse_error_plot.png",
+  plot = reverse_plot, 
+  width = 10, 
+  height = 10, 
+  dpi = 300
+)
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+- We see the reverse reads have similar results as the forward reads.
+
+#8.3.5 Question 3.
+
+```{r}
+old_file <- here::here("outputs/mouse_ASVs.fa")
+new_file <- here::here("new_mouse_ASVs.fa")
+
+if (file.exists(old_file)) {
+  file.rename(from = old_file, to = new_file)
+  cat("Successfully renamed file to")
+} else {
+  cat("Unsuccessful")
+}
+
+new_mouse <- readLines(here::here("new_mouse_ASVs.fa"))
+indexed_read_ASV15 <- which(new_mouse == ">ASV15")
+
+asv15 <- new_mouse[indexed_read_ASV15:(indexed_read_ASV15 + 4)]
+
+indexed_read_ASV188 <- which(new_mouse == ">ASV188")
+
+asv188 <- new_mouse[indexed_read_ASV188:(indexed_read_ASV188 + 4)]
+
+```
+
+- The two ASVs that were chosen were ASV15 and ASV188
+
+#8.4.1.1 Question 4.
+
+#8.4.1.2 Question 5.

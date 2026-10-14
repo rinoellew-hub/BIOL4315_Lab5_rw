@@ -1,0 +1,26 @@
+---
+title: "05-lab5"
+output: html_document
+date: "2026-10-14"
+---
+
+##Lab 5: Amplicon Metagenomics
+
+
+#8.3.5 Question 3.
+````{r}
+old_file <- here::here("outputs/mouse_ASVs.fa")
+new_file <- here::here("outputs/new_mouse_ASVs.fa")
+
+if (file.exists(old_file)) {
+  file.rename(from = old_file, to = new_file)
+  cat("Successfully renamed file to")
+} else {
+  cat("Unsuccessful")
+}
+````
+- 
+
+#8.4.1.1 Question 4.
+
+#8.4.1.2 Question 5.
